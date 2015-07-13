@@ -110,13 +110,14 @@
 
         }
         .logo {
-            position: relative;
+            position: absolute;
             top: 50%;
+            left: 50%;
             text-align: center;
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
         .score {
             font-size: 6em;
@@ -125,23 +126,30 @@
         .welcome {
             font-size: 3em;
         }
+        .section-content {
+            position: static;
+        }
     </style>
 </head>
 <body>
     <div id="layout" class="pure-g">
         <div class="main pure-u-1">
             <section class="current">
-                <div class='logo'>
-                    <h2 class="welcome">Welcome</h2>
-                    <button id="join" class="pure-button pure-button-primary button-block">开启旅途</button>
+                <div class="section-content">
+                    <div class='logo'>
+                        <h2 class="welcome">Welcome</h2>
+                        <button id="join" class="pure-button pure-button-primary button-block">开启旅途</button>
+                    </div>
                 </div>
             </section>
             <section>
-                <div class="logo">
-                    <p>得分</p>
-                    <h1 class="score">
-                        <span class="right">0</span>/<span class="total">8</span>
-                    </h1>
+                <div class="section-content">
+                    <div class="logo">
+                        <p>得分</p>
+                        <h1 class="score">
+                            <span class="right">0</span>/<span class="total">8</span>
+                        </h1>
+                    </div>
                 </div>
             </section>
         </div>

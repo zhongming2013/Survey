@@ -9,7 +9,7 @@ Zepto(function ($) {
         {
             question: '以下哪种精油具有消炎祛痘的功效？',
             options: ['薰衣草', '茶树', '茉莉'],
-            answer: 0
+            answer: 1
         },
         {
             question: '以下错误的护理方法是？',
@@ -24,22 +24,22 @@ Zepto(function ($) {
         {
             question: '洗头发的时候，护发素应该涂在头发的什么部位？',
             options: ['发稍', '发稍和发中', '发根、发梢和发中'],
-            answer: 0
+            answer: 1
         },
         {
             question: '果酸能促进“去角质”，有助新皮肤细胞的生成，从而增加皮肤的厚度，改善肌肤。但果酸也存在增加皮肤的敏感性尤其是被晒伤的可能性。美国化妆品成分评审专家小组认为产品需满足三项条件才能防止果酸副作用，以下哪项不属于？',
             options: ['果酸含量不超过10%', '产品的pH值高于3.5', '各类护肤化妆产品粘度不超过特定值'],
-            answer: 0
+            answer: 2
         },
         {
             question: '蛋清敷脸能收缩毛孔，以下哪种肤质适合？',
             options: ['干性', '中性', '油性'],
-            answer: 0
+            answer: 2
         },
         {
             question: '有关去角质，以下说法不当的是？',
             options: ['中性肌肤不太需要去角质', '脸部各部分都需去角质', '洗完澡后去角质事半功倍'],
-            answer: 0
+            answer: 1
         },
     ];
     var Survey = function (questions) {
