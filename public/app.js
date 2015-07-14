@@ -166,7 +166,7 @@ Zepto(function ($) {
                 rank = 2;
             }
 
-            var result = results[2];
+            var result = results[rank];
             $('.comment').html(result.comment);
             $('.donation').html(thanksStr.replace(/{f}/, result.donation));
             $('.test').removeClass('active').addClass('up');
