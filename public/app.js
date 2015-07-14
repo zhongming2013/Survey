@@ -42,12 +42,50 @@ Zepto(function ($) {
             answer: 1
         },
     ];
+    var results = [
+        {
+            range: '1-3',
+            comment: '淡淡的忧伤，还只是美丽小白哦，没关系，再接再厉哦！',
+            donation: '0.5'
+        },
+        {
+            range: '4-6',
+            comment: '恭喜你进阶为美丽练习生，再接再厉哦！',
+            donation: '0.8'
+        },
+        {
+            range: '7-8',
+            comment: '恭喜你成为美丽达人，棒棒哒！',
+            donation: '1.0'
+        }
+    ];
+    var thanksStr = '感谢您为“美丽事业，美好人生”公益项目捐出{f}元，将帮助更多年轻人成就美丽梦想！';
+
+    $('.loading').hide();
+    $('.welcome').addClass('active');
+
+    $('#join-btn').on('click', function () {
+        $('.welcome').removeClass('active').addClass('up');
+        $('.introduction').addClass('active');
+    });
+
+    $('#begin-btn').on('click', function () {
+        var sections = $('.test > section');
+        $('.introduction').removeClass('active').addClass('up');
+        $('.test').addClass('active');
+        $(sections[0]).addClass('current');
+        $(sections[1]).addClass('next');
+    });
+
+    $('.lottery').on('click', function () {
+        $('.result').removeClass('active').addClass('up');
+        $('.more').addClass('active');
+    });
+
     var Survey = function (questions) {
         this.current = 0;
         this.answers = [];
         this.questions = questions;
-
-        this.isJoin = false;
 
         this.init();
     }
@@ -56,8 +94,7 @@ Zepto(function ($) {
             this.html();
             this.sections = $('section');
             this.total = this.sections.length;
-            $($('.current').next()).addClass('next');
-            $('#join').on('click', this.join.bind(this));
+
             $('.main').on('change', this.onCheck.bind(this));
         },
         html: function () {
@@ -78,45 +115,35 @@ Zepto(function ($) {
                     + '</p><form class="pure-form answers">'
                     + optionsHtml + '</form></section>'
             }
-            $('.current').after(html);
+            $('.test > img').after(html);
         },
         next: function () {
 
-            if (this.current < this.total - 1) {
+            if (this.current < this.total) {
                 console.log('next');
                 this.current++;
             }
 
-            if (this.current === this.total - 1) {
-                this.score();
+            if (this.current === this.total) {
+                this.result();
                 console.log('end');
+                return;
             }
             
             if (this.current > 0) {
                 $(this.sections[this.current - 1])
-                    .removeClass()
+                    .removeClass('current')
                     .addClass('pre');
             }
             
             $(this.sections[this.current])
-                .removeClass()
+                .removeClass('next')
                 .addClass('current');
 
-            if (this.current < this.sections.length - 1) {
+            if (this.current < this.total - 1) {
                 $(this.sections[this.current + 1])
-                    .removeClass()
                     .addClass('next');
             }
-        },
-        prev: function () {
-            if (this.current > 0) {
-                this.current--;
-            }
-        },
-        join: function () {
-            console.log('join');
-            this.isJoin = true;
-            this.next();
         },
         onCheck: function (e) {
             var answer = +e.target.value;
@@ -124,16 +151,26 @@ Zepto(function ($) {
             this.answers[this.current] = answer;
             this.next();
         },
-        score: function () {
-            var score = 0;
+        result: function () {
+            var score = 0, rank = 0;
             var l = this.questions.length;
             for (var i=0; i < l; i++) {
                 if (this.answers[i + 1] === this.questions[i].answer) {
                     score++;
                 }
             }
-            $('.right').html(score);
-            $('.total').html(l);
+
+            if (score > 3 && score < 6) {
+                rank = 1;
+            } else if (score > 6) {
+                rank = 2;
+            }
+
+            var result = results[2];
+            $('.comment').html(result.comment);
+            $('.donation').html(thanksStr.replace(/{f}/, result.donation));
+            $('.test').removeClass('active').addClass('up');
+            $('.result').addClass('active');
         }
     }
 

@@ -15,6 +15,9 @@
             font-size: 1em;
             overflow: hidden;
         }
+        html, button, p, .pure-g {
+            font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
         .main {
             position: absolute;
             top: 0;
@@ -23,7 +26,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #FFF;
+            background: url(img/bg.jpg);
+            background-position: center;
+            background-size: cover;
             overflow: hidden;
         }
         section:first-child {
@@ -62,10 +67,11 @@
             left: 50%;
             padding: 1em;
             border-radius: 10px;
-            min-height: 65%;
+            min-height: 50%;
             width: 85%;
             color: #FFF;
-            opacity: 0.9;
+            opacity: 0.6;
+            text-align: left;
             -webkit-transition: all 1.0s ease-in-out;
             -moz-transition: all 1.0s ease-in-out;
             -o-transition: all 1.0s ease-in-out;
@@ -96,62 +102,129 @@
         .question {
             font-weight: bold;
             text-indent: 2em;
+            width: 100%;
+            margin: 1em 0;
+            color: #FFF;
         }
         .answers {
             margin-left: 1.5em;
             font-size: 1.2em; 
         }
-        .answers > label {
-            padding: 0.5em 0;
-        }
-        .button-block {
-            width: 100%;
-            font-size: 125%;
-
-        }
         .logo {
+            width: 25%;
+            margin: 5% auto;
+        }
+        .mini-logo {
+            width: 15%;
+            margin: 5% auto;
+        }
+        .pure-button {
+            color: #FFF;
+            background: #FF1744;
+            font-size: 125%;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        p {
+            color: red;
+            width: 90%;
+        }
+        .welcome > p {
+            margin: 15% auto;
+        }
+        .introduction > p {
+            margin: 5% auto;
+            text-indent: 2em;
+            text-align: justify;
+        }
+        .result > p {
+            margin: 1em auto;
+            text-align: left;
+            text-indent: 2em;
+        }
+        .main > div {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: absolute;
+            top: 100%;
+            transition: top 0.5s ease-in;
+        }
+        .main > div.active {
+            top: 0%;
+        }
+        .main > div.up {
+            top: -150%;
+        }
+        .lottery {
+            width: 60%;
+        }
+        .buttons > button {
+            width: 70%;
+            margin-top: 1em; 
+        }
+        .more-detail {
+            color: #2196F3;
+            text-decoration: none;
+            line-height: 4em;
+        }
+        .loading {
+            color: red;
             position: absolute;
             top: 50%;
-            left: 50%;
-            text-align: center;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-        .score {
-            font-size: 6em;
-            margin: 0;
-        }
-        .welcome {
-            font-size: 3em;
-        }
-        .section-content {
-            position: static;
+            left: 42%;
         }
     </style>
 </head>
 <body>
     <div id="layout" class="pure-g">
         <div class="main pure-u-1">
-            <section class="current">
-                <div class="section-content">
-                    <div class='logo'>
-                        <h2 class="welcome">Welcome</h2>
-                        <button id="join" class="pure-button pure-button-primary button-block">开启旅途</button>
-                    </div>
+            <span class="loading">loading...</span>
+            <div class="welcome">
+                <img class="logo" src="img/logo.png" alt="欧莱雅">
+                <p>
+                    美妆美发，你了解多少？<br/>
+                    你是美丽小白还是资深达人？<br/>
+                    快来参加欧莱雅美丽小测试！<br/>
+                    您的参与将为“美丽事业，美好人生”公益项目捐款，还能赢取欧莱雅代金券哦！
+                </p>
+                <button id="join-btn" class="pure-button pure-button-primary">美丽从这里起航</button>
+            </div>
+            <div class="introduction">
+                <img class="mini-logo" src="img/logo.png" alt="欧莱雅">
+                <p>
+                    “美丽事业，美好人生”公益项目由欧莱雅基金会于2009年启动。作为专门针对弱势群体而设的美容美发职业技能教育项目，至今已在近20个国家展开了相关活动，惠及千余人。2013年，欧莱雅中国启动“美丽事业，美好人生”美容专业技能培训公益项目，目前已培训200名学员。
+                </p>
+                <p>
+                    2015年，“美丽事业，美好人生”项目将覆盖中国更多省份和地区，吸引更多年轻人加入美的事业，帮助更多年轻人通过美丽事业成就梦想。
+                </p>
+                <button id="begin-btn" class="pure-button pure-button-primary button-block">开始美丽测试</button>
+            </div>
+            <div class="test">
+                <img class="mini-logo" src="img/logo.png" alt="欧莱雅">
+            </div>
+            <div class="result">
+                <img class="mini-logo" src="img/logo.png" alt="欧莱雅">
+                <p class="comment">
+                    淡淡的忧伤，还只是美丽小白哦，没关系，再接再厉哦！
+                </p>
+                <p class="donation">
+                    感谢您为“美丽事业，美好人生”公益项目捐出{f}元，将帮助更多年轻人成就美丽梦想！
+                </p>
+                <img class="lottery" src="img/lottery.png" alt="幸运抽奖">
+            </div>
+            <div class="more">
+                <img class="logo" src="img/logo.png" alt="欧莱雅">
+                <div class="buttons">
+                    <button class="pure-button pure-button-primary">美丽手艺人纪录片</button>
+                    <button class="pure-button pure-button-primary">美妆美发公开课</button>
+                    <button class="pure-button pure-button-primary">欧莱雅慕课系列</button>
                 </div>
-            </section>
-            <section>
-                <div class="section-content">
-                    <div class="logo">
-                        <p>得分</p>
-                        <h1 class="score">
-                            <span class="right">0</span>/<span class="total">8</span>
-                        </h1>
-                    </div>
-                </div>
-            </section>
+                <a class="more-detail" href="#">
+                    点击此处了解更多“美丽事业，美好人生”
+                </a>
+            </div>
         </div>
     </div>
     <script src="http://zeptojs.com/zepto.min.js"></script>
